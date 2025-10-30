@@ -5,8 +5,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # Load environment variable from .env file
-BASE_DIR = Path(__file__).resolve().parent
-ENV_PATH = BASE_DIR / ".env"
+BASE_DIR = Path(__file__).resolve().parent.parent
+ENV_PATH = BASE_DIR / "config" / ".env"
 load_dotenv(dotenv_path=ENV_PATH)
 
 # Mode

@@ -3,6 +3,10 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+
+config/.env
+config/token.json
+
 # C extensions
 *.so
 
@@ -159,6 +163,7 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
 
 # Pyre type checker
 .pyre/
