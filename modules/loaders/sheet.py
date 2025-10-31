@@ -4,7 +4,7 @@ from typing import Dict, List, Optional
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-from config import GOOGLE_CREDENTIALS_PATH, logger
+from config.config import GOOGLE_CREDENTIALS_PATH, logger
 
 
 class SheetLoader:
@@ -23,7 +23,7 @@ class SheetLoader:
         worksheet (Optional[gspread.Worksheet]): Selected worksheet tab
     """
 
-    def __init__(self, sheet_name: str, creds_path: Optional[Path] = None) -> None:
+    def __init__(self, sheet_name: str, creds_path: Path) -> None:
         """
         Initialize SheetLoader with sheet name and optional credentials path.
 

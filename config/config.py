@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 
 # Load environment variable from .env file
 BASE_DIR = Path(__file__).resolve().parent.parent
-ENV_PATH = BASE_DIR / "config" / ".env"
+CONFIG_PATH = BASE_DIR / "config"
+ENV_PATH = CONFIG_PATH / ".env"
 load_dotenv(dotenv_path=ENV_PATH)
 
 # Mode
@@ -19,14 +20,20 @@ LOG_DIR.mkdir(exist_ok=True)
 DATA_DIR: Path = BASE_DIR / "data"
 DATA_DIR.mkdir(exist_ok=True)
 
+# Curency API
+API_URL = os.getenv("API_URL")
+
 # Google Sheet
-GOOGLE_CREDENTIALS_PATH: str = os.getenv("GOOGLE_CREDENTIALS_PATH", "credentials.json")
+GOOGLE_CREDENTIALS_PATH: Path = CONFIG_PATH / os.getenv(
+    "GOOGLE_CREDENTIALS_PATH", "credentials.json"
+)
 GOOGLE_SHEET_NAME: str = os.getenv("GOOGLE_SHEET_NAME", "")
 WORKSHEET_NAME: str = os.getenv("WORKSHEET_NAME", "")
 
+
 # Logging Configuration
 LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
-LOG_FORMAT: str = "%(asctime)s [%(level)s] %(name)s: %(message)s"
+LOG_FORMAT: str = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
 LOG_FILE: Path = LOG_DIR / "analyz.log"
 
 
