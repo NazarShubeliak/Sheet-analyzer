@@ -1,8 +1,12 @@
 import os
+
 import joblib
 import pandas as pd
-from .models.desicion_tree import train_reqression_model
+
 from config.config import logger
+
+from .models.desicion_tree import train_reqression_model
+
 
 class ModelManager:
     def __init__(self, model_name: str, model_path: str) -> None:
@@ -10,9 +14,7 @@ class ModelManager:
         self.model_path = model_path
         self.model = None
 
-        self.__train_fn = {
-            "decision_tree": train_reqression_model
-        }.get(self.model_name)
+        self.__train_fn = {"decision_tree": train_reqression_model}.get(self.model_name)
 
         if self.__train_fn is None:
             message = f"Unknow model name {self.model_name}"
@@ -34,5 +36,3 @@ class ModelManager:
             self.load()
         else:
             self.train(df)
-
-    

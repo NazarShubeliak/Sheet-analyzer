@@ -3,7 +3,7 @@ from config.config import (
     GOOGLE_CREDENTIALS_PATH,
     GOOGLE_SHEET_NAME,
     WORKSHEET_NAME,
-    logger
+    logger,
 )
 
 from .loaders.currency_api import get_currency_ratest
@@ -28,5 +28,5 @@ def run_pipeline() -> None:
     logger.info("Normalize currency to EUR")
 
     # Step 4: Convert data to DataFrame structure
-    print(to_dataframe(data))
     logger.info("Convert data to DataFrame")
+    return to_dataframe(data)

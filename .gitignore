@@ -10,6 +10,9 @@ config/token.json
 # C extensions
 *.so
 
+# Models
+ml/save_models
+
 # Distribution / packaging
 .Python
 build/

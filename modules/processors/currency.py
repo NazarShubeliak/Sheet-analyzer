@@ -1,7 +1,11 @@
-from typing import List, Dict
+from typing import Dict, List
+
 from config.config import logger
 
-def normalize_to_eur(data: List[Dict[str, str]], rates: Dict[str, float]) -> List[Dict[str, str]]:
+
+def normalize_to_eur(
+    data: List[Dict[str, str]], rates: Dict[str, float]
+) -> List[Dict[str, str]]:
     """
     Normalize 'Total' filed to EUR using provided exchange rates.
 

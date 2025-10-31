@@ -1,8 +1,10 @@
 import pandas as pd
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeRegressor
+
 from config.config import logger
+
 
 def train_reqression_model(df: pd.DataFrame) -> DecisionTreeRegressor:
     """
@@ -21,10 +23,12 @@ def train_reqression_model(df: pd.DataFrame) -> DecisionTreeRegressor:
         encoder = LabelEncoder()
         df["Country_encoded"] = encoder.fit_transform(df["Country"])
 
-        x = df["Country_encoded", "Month"]
+        x = df[["Country_encoded", "Month"]]
         y = df["Total"]
 
-        x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+        x_train, x_test, y_train, y_test = train_test_split(
+            x, y, test_size=0.2, random_state=42
+        )
 
         model = DecisionTreeRegressor(random_state=42)
         model.fit(x_train, y_train)

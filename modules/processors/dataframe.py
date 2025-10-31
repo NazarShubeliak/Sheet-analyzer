@@ -1,6 +1,9 @@
-from typing import List, Dict
+from typing import Dict, List
+
 import pandas as pd
+
 from config.config import logger
+
 
 def to_dataframe(data: List[Dict[str, str]]) -> pd.DataFrame:
     """
