@@ -36,7 +36,7 @@ def train_reqression_model(df: pd.DataFrame) -> DecisionTreeRegressor:
         score = model.score(x_test, y_test)
         logger.info(f"Model trained with R score: {score:.3f}")
 
-        return model
+        return model, encoder
     except Exception as e:
         logger.error(f"Failed to train reqression model: {e}")
         raise

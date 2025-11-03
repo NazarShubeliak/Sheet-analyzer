@@ -9,10 +9,12 @@ from .models.desicion_tree import train_reqression_model
 
 
 class ModelManager:
-    def __init__(self, model_name: str, model_path: str) -> None:
+    def __init__(self, model_name: str, model_path: str, encoder_path: str) -> None:
         self.model_name = model_name
         self.model_path = model_path
+        self.encoder_path = encoder_path
         self.model = None
+        self.encoder = None
 
         self.__train_fn = {"decision_tree": train_reqression_model}.get(self.model_name)
 
@@ -28,8 +30,9 @@ class ModelManager:
         self.model = joblib.load(self.model_path)
 
     def train(self, df: pd.DataFrame) -> None:
-        self.model = self.__train_fn(df)
+        self.model, self.encoder = self.__train_fn(df)
         joblib.dump(self.model, self.model_path)
+        joblib.dump(self.encoder, self.encoder_path)
 
     def get_or_train(self, df: pd.DataFrame) -> None:
         if self.model_exists():
