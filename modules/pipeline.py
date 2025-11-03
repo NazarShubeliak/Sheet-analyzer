@@ -6,13 +6,26 @@ from config.config import (
     logger,
 )
 
+import pandas as pd
 from .loaders.currency_api import get_currency_ratest
 from .loaders.sheet import SheetLoader
 from .processors.currency import normalize_to_eur
 from .processors.dataframe import to_dataframe
 
 
-def run_pipeline() -> None:
+def run_pipeline() -> pd.DataFrame:
+    """
+    Run the full data ingestion and preprocessing pipeline.
+
+    This function performs the following steps:
+        1. Loads raw data from a specified Google Sheet.
+        2. Fetches current currency exchange rates from an external API.
+        3. Normalizes all monetary values to EUR using the fetched rates.
+        4. Converts the cleaned data into a structured pandas DataFrame.
+
+    Returns:
+        pd.DataFrame: Preprocessed dataset ready for modeling.
+    """
     # Step 1: Get data from Google Sheet
     sheet_loader = SheetLoader(GOOGLE_SHEET_NAME, GOOGLE_CREDENTIALS_PATH)
     sheet_loader.select_worksheet(WORKSHEET_NAME)
