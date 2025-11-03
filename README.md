@@ -6,7 +6,6 @@ Sheet Analyzer is a modular system for collecting, normalizing, and forecasting 
 root/
 ├── config/
 │   └── config.py
-├── models/
 ├── ml/           
 │   ├── model_runner/
 │   │   └── decision_tree.py
